@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --color-accent: #E0FF00;
+  --color-surface: #111111;
+  --color-bg: #080808;
+  --color-border: #1F1F1F;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-[#A0A0A0] font-sans antialiased selection:bg-accent selection:text-black;
+    background-image: 
+      radial-gradient(circle at 50% -20%, #1a1a1a 0%, transparent 70%),
+      linear-gradient(to bottom, transparent, #080808);
+  }
+
+  h1, h2, h3 {
+    @apply text-white font-display uppercase tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-black font-mono font-bold py-3 px-8 rounded-none transition-all duration-300 hover:opacity-90 active:scale-[0.98] flex items-center justify-center gap-3 uppercase tracking-wider text-sm relative overflow-hidden;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+    box-shadow: 0 0 0 rgba(224, 255, 0, 0);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 20px rgba(224, 255, 0, 0.3);
+    @apply -translate-y-0.5;
+  }
+
+  .btn-primary::after {
+    content: '';
+    @apply absolute top-0 -left-full w-full h-full bg-white/30 skew-x-[-25deg] transition-all duration-700;
+  }
+
+  .btn-primary:hover::after {
+    @apply left-full;
+  }
+
+  .btn-outline {
+    @apply border border-border text-white font-mono py-2 px-4 transition-all duration-300 hover:bg-white hover:text-black hover:border-white uppercase text-[10px] tracking-widest active:scale-95;
+  }
+
+  .tool-card {
+    @apply bg-surface border border-border relative overflow-hidden transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7)];
+  }
+
+  .tool-card:hover {
+    @apply border-accent/40 -translate-y-1;
+  }
+
+  .status-label {
+    @apply font-mono text-[10px] uppercase tracking-[0.2em] text-[#555];
+  }
+
+  .glass-panel {
+    @apply bg-surface/80 backdrop-blur-xl border border-border transition-all duration-500;
+  }
+
+  .theme-cyberpunk {
+    --color-accent: #FF00FF;
+    --color-bg: #0A001F;
+    --color-surface: #1A0033;
+    --color-border: #330066;
+  }
+
+  .theme-minimal {
+    --color-accent: #000000;
+    --color-bg: #F5F5F5;
+    --color-surface: #FFFFFF;
+    --color-border: #E5E5E5;
+    @apply text-black;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1F1F1F;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E0FF00;
+}
+
+/* Grid background pattern */
+.bg-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, #121212 1px, transparent 1px),
+    linear-gradient(to bottom, #121212 1px, transparent 1px);
+}
+
+/* Scanning animation */
+@keyframes scan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+.animate-scan {
+  animation: scan 2s linear infinite;
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(224, 255, 0, 0.05), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
