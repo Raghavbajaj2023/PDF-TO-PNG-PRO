@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.2">
+  <url>
+    <loc>https://docsfactory.in/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+```
+
+**4.** Click green **"Commit changes"**
+
+---
+
+## Create the Robots.txt File
+
+This tells Google it is allowed to crawl everything.
+
+**1.** Click **"Add file"** → **"Create new file"**
+
+**2.** In filename box type:
+```
+public/robots.txt
+```
+
+**3.** Paste this in content area:
+```
+User-agent: *
+Allow: /
+Sitemap: https://docsfactory.in/sitemap.xml
+```
+
+**4.** Click green **"Commit changes"**
+
+---
+
+## Submit Sitemap to Google
+
+Wait 2 minutes for Netlify to redeploy, then:
+
+**1.** Go to Google Search Console
+```
+https://search.google.com/search-console
+```
+
+**2.** In the left sidebar click **"Sitemaps"**
+
+**3.** In the box that says "Add a new sitemap" type:
+```
+sitemap.xml
